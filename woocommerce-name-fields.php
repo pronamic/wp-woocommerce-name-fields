@@ -2,7 +2,7 @@
 /*
 Plugin Name: WooCommerce Name Fields
 Plugin URI: http://www.pronamic.eu/
-Description: Add support for house number checkout fields to WooCommerce.
+Description:
 
 Version: 1.0.0
 Requires at least: 3.0
@@ -10,7 +10,10 @@ Requires at least: 3.0
 Author: Pronamic
 Author URI: http://www.pronamic.eu/
 
-License: GPL
+Text Domain: woocommerce_name_fields
+Domain Path: /languages/
+
+License: GPLv3
 */
 
 class WooCommerceNameFieldsPlugin {
@@ -45,28 +48,25 @@ class WooCommerceNameFieldsPlugin {
 	public function checkout_fields( $fields ) {
 		// Fields
 		$field_name_initials = array(
-			'label'       => __( 'Initials', 'wc_hn' ),
+			'label'       => __( 'Initials', 'woocommerce_name_fields' ),
 			'required'    => true,
 			'class'       => array( 'form-row-first' ),
 			'clear'       => false,
 		);
 
 		$field_last_name_prefix = array(
-			'label'       => __( 'Prefix', 'wc_hn' ),
+			'label'       => _x( 'Prefix', 'last name', 'woocommerce_name_fields' ),
 			'required'    => false,
 			'class'       => array( 'form-row-first' ),
 			'clear'       => false,
 		);
 
 		$field_last_name_clean = array(
-			'label'       => __( 'Last Name', 'wc_hn' ),
+			'label'       => __( 'Last Name', 'woocommerce_name_fields' ),
 			'required'    => true,
 			'class'       => array( 'form-row-last' ),
 			'clear'       => true,
 		);
-
-		// Position
-		$position = 3;
 
 		// Billing fields
 		if ( isset( $fields['billing'] ) ) {
@@ -97,7 +97,7 @@ class WooCommerceNameFieldsPlugin {
 			$fields['billing'] = $fields_billing_new;
 		}
 
-		// Shipping fields 
+		// Shipping fields
 		if ( isset( $fields['shipping'] ) ) {
 			$fields_shipping = $fields['shipping'];
 			$fields_shipping['shipping_name_initials']    = $field_name_initials;
@@ -151,9 +151,9 @@ class WooCommerceNameFieldsPlugin {
 		$last_name_prefix = isset( $posted['billing_last_name_prefix'] ) ? woocommerce_clean( $posted['billing_last_name_prefix'] ) : '';
 		$last_name_clean  = isset( $posted['billing_last_name_clean'] ) ? woocommerce_clean( $posted['billing_last_name_clean'] ) : '';
 
-		$billing_last_name = trim( sprintf( 
-			'%s %s', 
-			$last_name_prefix, 
+		$billing_last_name = trim( sprintf(
+			'%s %s',
+			$last_name_prefix,
 			$last_name_clean
 		) );
 
@@ -174,9 +174,9 @@ class WooCommerceNameFieldsPlugin {
 		$last_name_prefix = isset( $posted['shipping_last_name_prefix'] ) ? woocommerce_clean( $posted['shipping_last_name_prefix'] ) : '';
 		$last_name_clean  = isset( $posted['shipping_last_name_clean'] ) ? woocommerce_clean( $posted['shipping_last_name_clean'] ) : '';
 
-		$shipping_last_name = trim( sprintf( 
-			'%s %s', 
-			$last_name_prefix, 
+		$shipping_last_name = trim( sprintf(
+			'%s %s',
+			$last_name_prefix,
 			$last_name_clean
 		) );
 
