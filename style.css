@@ -1,0 +1,17 @@
+/**
+ * Form row - normal width = 47%
+ */
+#billing_name_initials_field,
+#shipping_name_initials_field {
+	width: 23.5%;
+}
+
+#billing_last_name_prefix_field,
+#shipping_last_name_prefix_field {
+	width: 23.5%;
+}
+
+#billing_last_name_field,
+#shipping_last_name_field {
+	width: 47%;
+}
